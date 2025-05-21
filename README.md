@@ -11,3 +11,8 @@ installed react from npm
 installed reactDOM from npm
 executed parcel using npx parcel index.html
 included the browserslist in the package.js
+
+Episode 03
+mostly realted to JSX
+functional component and how to render it
+component composition= putting one componet inside the other
