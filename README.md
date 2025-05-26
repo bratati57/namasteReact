@@ -16,3 +16,8 @@ Episode 03
 mostly realted to JSX
 functional component and how to render it
 component composition= putting one componet inside the other
+
+
+Episode 04
+Created a basic food delivery app with some static data from the episode.
+Rendered food cards.
