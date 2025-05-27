@@ -21,3 +21,9 @@ component composition= putting one componet inside the other
 Episode 04
 Created a basic food delivery app with some static data from the episode.
 Rendered food cards.
+
+Episode 05
+Restructrured our App. Created src folder and shifted all our code to that folder. Added two more folders components and assets folder
+Learnt about named and default import and exports
+Why React is fast- because of its ability to update the DOM efficiently using the method RECONCILIATION/REACT FIBER using the diff algorithm.
+Then used useState in our code
