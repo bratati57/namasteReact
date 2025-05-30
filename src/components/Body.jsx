@@ -1,21 +1,28 @@
-import React from 'react'
+import React,{useState, useEffect}  from 'react'
 import ResCards from "./ResCards"
 import RES_DATA from "../utils/mockData"
-import {useState, useEffect} from "react"
+import { RES_LIST_URL} from '../utils/constants'
 import Shimmer from "./Shimmer"
+import {LOGO_URL} from "../utils/constants"
+import {Link} from "react-router-dom"
 function Body() {
-  const [resData, setResData]= useState(RES_DATA)
-  const [filteredData, setFilteredData]= useState(RES_DATA)//can later be changed when fetch works
+  const [resData, setResData]= useState([])
+  const [filteredData, setFilteredData]= useState([])//can later be changed when fetch works
   const [searchValue, setSearchValue]= useState("")
-// useEffect(()=>{getData()},[]
-// )
-// const getData=async()=>{
-//   const data=await fetch("https://jsfiddle.net/Ln47kyt2/3/https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9352403&lng=77.624532&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
-// const datajson =await data.json()
-// console.log(datajson)
-// }
+
+useEffect(()=>{getData()},[]
+)
+
+
+   const getData=async()=>{
+  const data=await fetch(RES_LIST_URL)
+const resjson =await data.json()
+setResData(resjson?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+setFilteredData(resjson?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+console.log(resjson?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+}
+   if (filteredData.length===0) return <Shimmer/>
   return (
-  filteredData.length===0? <Shimmer/>:
     <div>
       <div className="search-container">
         <input
@@ -25,23 +32,27 @@ function Body() {
           value={searchValue}
           onChange={(e)=>{setSearchValue(e.target.value)}}
         />
-            <button className="btn" onClick={()=>{setFilteredData(resData.filter((res)=>(res.data.name.toLowerCase().includes(searchValue.toLowerCase()))))}}>Search</button>
+            <button className="btn" onClick={()=>{setFilteredData(resData.filter((res)=>(res?.info?.name.toLowerCase().includes(searchValue.toLowerCase()))))}}>Search</button>
 {/* HIGH RATED RESTUARANT */}
    
-         <button  className="btn"  onClick={()=>{setFilteredData(resData.filter((res)=>res.data.avgRating>=4))}} >High Rated Restuarant</button>
+         <button  className="btn"  onClick={()=>{setFilteredData(resData.filter((res)=>res?.info?.avgRating>=4))}} >High Rated Restuarant</button>
       </div>
   
       <div className="card-container">
         {filteredData.map((res) => {
-          const restData = res.data;
+          const restData = res?.info;
+          console.log("single restuarant", res?.info.id)
           return (
-            <ResCards
-              key={restData?.id}
+            <Link to={"/restuarants/"+restData?.id}   key={restData?.id}>
+                <ResCards
               resName={restData?.name}
               cuisines={restData?.cuisines}
-              costForTwo={restData?.costForTwoString}
+              costForTwo={restData?.costForTwo}
               avgRating={restData?.avgRating}
+              cloudinaryImageI={resData?.cloudinaryImageId}
             />
+            </Link>
+        
           );
         })}
       </div>

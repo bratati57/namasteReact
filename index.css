@@ -93,3 +93,9 @@
     margin-right:10px;
         cursor:pointer;
 }
+.shimmer-card-style{
+    width:200px;
+    height:300px;
+    background-color: #F0F0F0;
+    margin:10px;
+}

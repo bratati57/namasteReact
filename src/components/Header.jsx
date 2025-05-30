@@ -1,6 +1,6 @@
-import React from 'react'
+import React,{useState} from 'react'
 import {LOGO_URL} from "../utils/constants"
-import {useState} from "react"
+import {Link} from "react-router-dom"
 
 function Header() {
   const [btnContent, setBtnContent]= useState("Logout")
@@ -18,9 +18,9 @@ function Header() {
       <span className="title-style2">PeTooK</span></div>
       <div className="navbar-style">
         <ul>
-          <li>HOME</li>
-          <li>ABOUT</li>
-          <li>CART</li>
+         <li><Link to="/">HOME</Link></li>
+          <li><Link to="/about">ABOUT</Link></li>
+          <li><Link to="/contact">CONTACT US</Link></li>
         </ul>
         <button onClick={()=>setBtnContent(btnContent==="Logout"?"Login":"Logout")}>{btnContent}</button>
       </div>

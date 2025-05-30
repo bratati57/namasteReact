@@ -1,16 +1,47 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import AppLayout from "./components/AppLayout"
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import About from "./components/About"
-import Contact from "./components/Contact"
+import Header from "./components/Header";
+import About from "./components/About";
+import Contact from "./components/Contact";
+import Body from "./components/Body";
+import RestuarantMenu from "./components/RestuarantMenu";
+import Footer from "./components/Footer"
 import FallbackUI from "./components/FallbackUI";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
+
+const AppLayout = () => {
+  return (
+    <div>
+      <Header />
+      <Outlet/>
+      <Footer />
+    </div>
+  );
+};
 //appRouter  a router configuration
 const appRouter=createBrowserRouter([
     {
     path:"/",
     element:<AppLayout/>,
+    children:[
+        {
+             path:"/",
+            element:<Body/>,
+        },
+           {
+             path:"/about",
+            element:<About/>,
+        },
+        {
+             path:"/contact",
+            element:<Contact/>,
+        },
+        {
+             path:"/restuarants/:resId",
+            element:<RestuarantMenu/>,
+        }
+    ],
     errorElement:<FallbackUI/>
 },
 {
