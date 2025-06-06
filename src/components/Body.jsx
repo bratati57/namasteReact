@@ -5,6 +5,7 @@ import { RES_LIST_URL} from '../utils/constants'
 import Shimmer from "./Shimmer"
 import {LOGO_URL} from "../utils/constants"
 import {Link} from "react-router-dom"
+import useOnlineStatus from "../utils/useOnlineStatus"
 function Body() {
   const [resData, setResData]= useState([])
   const [filteredData, setFilteredData]= useState([])//can later be changed when fetch works
@@ -12,7 +13,7 @@ function Body() {
 
 useEffect(()=>{getData()},[]
 )
-
+const onlineStatus=useOnlineStatus()
 
    const getData=async()=>{
   const data=await fetch(RES_LIST_URL)
@@ -21,6 +22,7 @@ setResData(resjson?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.res
 setFilteredData(resjson?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
 console.log(resjson?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
 }
+if (onlineStatus===false) return <h1>Hello! Looks like there is an issue with your internet connection</h1>
    if (filteredData.length===0) return <Shimmer/>
   return (
     <div>
