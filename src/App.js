@@ -1,4 +1,4 @@
-import React, {Suspense, lazy} from "react";
+import React, {Suspense, lazy,useState, useEffect} from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import About from "./components/About";
@@ -8,15 +8,25 @@ import RestuarantMenu from "./components/RestuarantMenu";
 import Footer from "./components/Footer"
 import FallbackUI from "./components/FallbackUI";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import UserContext from "./utils/UserContext";
 // import Grocery from "./components/Grocery";
 const Grocery= lazy(()=>import("./components/Grocery"))
 
 const AppLayout = () => {
+  const [user, setUser] =useState()
+  useEffect(() => {
+    //After API call we can update the user name etc
+    setUser("Bratati")
+  }, [])
+  
   return (
     <div>
-      <Header />
+      <UserContext.Provider value={{loggedInUser:user,setUser}}>
+        <Header />
       <Outlet/>
       <Footer />
+      </UserContext.Provider>
+      
     </div>
   );
 };
@@ -50,14 +60,7 @@ const appRouter=createBrowserRouter([
     ],
     errorElement:<FallbackUI/>
 },
-{
-    path:"/about",
-    element:<About/>,
-},
-{
-    path:"/contact",
-    element:<Contact/>,
-},
+
 ])
 // JSXheading converted to React.createElement using Babel which is then converted to React element which is a JS object and then using render method it is converted to HTML element and endered into the browser
 const root = ReactDOM.createRoot(document.getElementById("root"));

@@ -16,7 +16,7 @@ const RestuarantMenu = () => {
     <div className="res-menu">
       <h1>{nameOfRes}</h1>
       <h2>Menu:</h2>
-      {menu.map((item) => {
+      {/* {menu.map((item) => {
         const itemInside = item?.card?.info;
         return (
           <div key={itemInside?.id}>
@@ -25,7 +25,7 @@ const RestuarantMenu = () => {
             </h3>
           </div>
         );
-      })}
+      })} */}
     </div>
   );
 };

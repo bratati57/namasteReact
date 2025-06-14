@@ -1,40 +1,42 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import { LOGO_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
-
+import UserContext from "../utils/UserContext"
 function Header() {
   const [btnContent, setBtnContent] = useState("Logout");
   // const [isLoggedIn, setIsLoggedIn]= useState("true")
   const onlineStatus = useOnlineStatus();
+  const {loggedInUser}=useContext(UserContext)
   return (
-    <div className="header">
+    <div className=" bg-emerald-100 flex justify-between px-2.5 shadow-xl mb-4">
       <div>
-        <img className="logo-style" alt="app-log" src={LOGO_URL}></img>
+        <img className="w-26 h-26" alt="app-log" src={LOGO_URL}></img>
       </div>
-      <div className="title">
+      <div className="mt-5">
         {" "}
-        <span className="title-style1">the </span>
-        <span className="title-style2">PeTooK</span>
+        <span className="text-4xl font-bold italic text-red-800">the </span>
+        <span className="text-5xl font-extrabold text-rose-700">PeTooK</span>
       </div>
-      <div className="navbar-style">
-        <ul>
-          <li>Online~~ {onlineStatus ? "ONLINE" : "OFFLINE"}</li>
+      <div className="flex my-7">
+        <ul className="flex justify-evenly align-middle text-nowrap">
+          <li className="bg-emerald-200 rounded-lg m-1 p-2 text-blue-950 font-medium">{onlineStatus ? "ONLINE" : "OFFLINE"}</li>
+          <li className="bg-emerald-200 rounded-lg m-1 p-2 text-blue-950 font-medium">{loggedInUser}</li>
 
-          <li>
+          <li className="bg-emerald-200 rounded-lg m-1 p-2 text-blue-950  font-medium">
             <Link to="/">HOME</Link>
           </li>
-          <li>
+          <li className="bg-emerald-200 rounded-lg m-1 p-2 text-blue-950  font-medium">
             <Link to="/grocery">GROCERY</Link>
           </li>
-          <li>
+          <li className="bg-emerald-200 rounded-lg m-1 p-2 text-blue-950 font-medium">
             <Link to="/about">ABOUT</Link>
           </li>
-          <li>
+          <li className="bg-emerald-200 rounded-lg m-1 p-2 text-blue-950  font-medium">
             <Link to="/contact">CONTACT US</Link>
           </li>
         </ul>
-        <button
+        <button className="bg-emerald-200 rounded-lg m-1 p-2 text-blue-950  font-medium"
           onClick={() =>
             setBtnContent(btnContent === "Logout" ? "Login" : "Logout")
           }
