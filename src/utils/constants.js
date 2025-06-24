@@ -1,3 +1,7 @@
+
+export const RES_COVER_PHOTO_URL="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"
+
+// export const RES_COVER_PHOTO_URL ="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"
 export const RES_IMG_URL="https://www.rewardsnetwork.com/wp-content/uploads/2016/12/IndianFood_Main.jpg"
 export const LOGO_URL="https://thumbs.dreamstime.com/b/burger-logo-hamburger-design-minimal-style-cheeseburger-plate-emblem-label-fresh-tasty-menu-restaurant-cafe-sandwich-369913617.jpg"
 export const RES_LIST_URL="https://thingproxy.freeboard.io/fetch/https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9352403&lng=77.624532&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"

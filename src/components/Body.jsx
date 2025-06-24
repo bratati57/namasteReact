@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { RES_LIST_URL } from "../utils/constants";
 import ResCards from "./ResCards";
-import { RES_LIST_URL } from "../utils/constants";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
@@ -40,7 +39,7 @@ function Body() {
     );
   if (resData.length === 0) return <Shimmer />;
   return (
-    <div className="p-3">
+    <div className="p-4">
       <div className="my-1.5">
         <input
           className="mr-1.5 p-2 border border-cyan-200 rounded-lg"
@@ -76,16 +75,16 @@ function Body() {
           High Rated Restuarant
         </button>
     
-         <input className="ml-1.5 p-2 border border-cyan-200 rounded-lg"
+         {/* <input className="ml-1.5 p-2 border border-cyan-200 rounded-lg"
           type="text" value={loggedInUser} onChange={(e)=>{setUser(e.target.value)}}/>
-          <span className="font-normal px-2">{loggedInUser}</span>
+          <span className="font-normal px-2">{loggedInUser}</span> */}
       </div>
 
-      <div className="flex p-4">
+      <div className="flex flex-row justify-around">
         {console.log(filteredData)}
         {filteredData.map((res) => {
           const restData = res?.info;
-          // console.log("single restuarant", res?.info.id);
+          console.log("single restuarant", restData?.cloudinaryImageId);
           return (
             <Link to={"/restuarants/" + restData?.id} key={restData?.id}>
               <ResCards
@@ -93,7 +92,7 @@ function Body() {
                 cuisines={restData?.cuisines}
                 costForTwo={restData?.costForTwo}
                 avgRating={restData?.avgRating}
-                cloudinaryImageI={resData?.cloudinaryImageId}
+                cloudinaryImageId={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${res?.info?.cloudinaryImageId}`}
               />
             </Link>
           );

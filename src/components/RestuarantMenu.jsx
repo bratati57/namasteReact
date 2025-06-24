@@ -13,19 +13,23 @@ const RestuarantMenu = () => {
   console.log("menu", menu);
 
   return (
-    <div className="res-menu">
-      <h1>{nameOfRes}</h1>
-      <h2>Menu:</h2>
-      {/* {menu.map((item) => {
+    <div className="m-2 p-2 text-center">
+      <h1 className="text-xl font-bold p-2">{nameOfRes}</h1>
+      <h2 className="text-md font-medium p-2">Menu:</h2>
+      {menu.map((item) => {
         const itemInside = item?.card?.info;
         return (
-          <div key={itemInside?.id}>
+          <div className="text-md w-6/12 p-2 m-auto" key={itemInside?.id}>
+          <div className="m-1 p-4 bg-amber-100">
             <h3>
               {itemInside?.name} - Rs. {itemInside?.price / 100}
             </h3>
+            <img
+            />
+            </div>
           </div>
         );
-      })} */}
+      })}
     </div>
   );
 };

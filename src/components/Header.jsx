@@ -3,11 +3,13 @@ import { LOGO_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext"
+import {useSelector} from "react-redux"
 function Header() {
   const [btnContent, setBtnContent] = useState("Logout");
   // const [isLoggedIn, setIsLoggedIn]= useState("true")
   const onlineStatus = useOnlineStatus();
   const {loggedInUser}=useContext(UserContext)
+      const cartItems=useSelector((state)=>state.cart.items)
   return (
     <div className=" bg-emerald-100 flex justify-between px-2.5 shadow-xl mb-4">
       <div>
@@ -34,6 +36,9 @@ function Header() {
           </li>
           <li className="bg-emerald-200 rounded-lg m-1 p-2 text-blue-950  font-medium">
             <Link to="/contact">CONTACT US</Link>
+          </li>
+          <li className="bg-emerald-200 rounded-lg m-1 p-2 text-blue-950  font-medium">
+            <Link to="/cart">CART-({cartItems.length})</Link>
           </li>
         </ul>
         <button className="bg-emerald-200 rounded-lg m-1 p-2 text-blue-950  font-medium"
