@@ -2,7 +2,7 @@
 // import {RES_IMG_URL, RES_COVER_PHOTO_URL} from "../utils/constants"
 function ResCards({ resName, cuisines, costForTwo, avgRating, cloudinaryImageId }){
   return (
-    <div  className="w-80 h-30 rounded-xl m-4 border-2 border-amber-50">
+    <div  className="w-80 rounded-xl m-4 border-2 border-gray-50  hover:border-gray-200 bg-gray-50 hover:bg-gray-200">
         <img
           className="rounded-xl"
           src={cloudinaryImageId}

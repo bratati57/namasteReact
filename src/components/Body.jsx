@@ -27,10 +27,10 @@ function Body() {
       resjson?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants
     );
-    console.log(
-      resjson?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants
-    );
+    // console.log(
+    //   resjson?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+    //     ?.restaurants
+    // );
     // return resData;
   };
   if (onlineStatus === false)
@@ -39,7 +39,7 @@ function Body() {
     );
   if (resData.length === 0) return <Shimmer />;
   return (
-    <div className="p-4">
+    <div className="p-4  overflow-auto">
       <div className="my-1.5">
         <input
           className="mr-1.5 p-2 border border-cyan-200 rounded-lg"
@@ -80,11 +80,11 @@ function Body() {
           <span className="font-normal px-2">{loggedInUser}</span> */}
       </div>
 
-      <div className="flex flex-row justify-around">
-        {console.log(filteredData)}
+      <div className="flex flex-wrap">
+        {/* {console.log(filteredData)} */}
         {filteredData.map((res) => {
           const restData = res?.info;
-          console.log("single restuarant", restData?.cloudinaryImageId);
+          // console.log("single restuarant", restData?.cloudinaryImageId);
           return (
             <Link to={"/restuarants/" + restData?.id} key={restData?.id}>
               <ResCards

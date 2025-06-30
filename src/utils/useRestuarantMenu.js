@@ -19,3 +19,5 @@ const useRestuarantMenu = (resId) => {
   return resMenu;
 };
 export default useRestuarantMenu;
+//response?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[-from 2-]
+//response?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2].card?.card?.itemCards[---]
