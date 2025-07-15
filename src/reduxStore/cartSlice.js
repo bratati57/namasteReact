@@ -1,10 +1,16 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 const cartSlice= createSlice({
     name:"cart",
-    initialState:{items:["apple pie", "choco sauce icecream"]},
+    // initialState:{items:[{name:"biriyani", star:"5"}, {id:"looloo", name:"chocos", star:"4"}]},
+        initialState:{items:[]},
     reducers:{
         addItem:(state, action)=>{
+            // state.items.map((itemm, index)=>{
+            //     console.log("inside slice", itemm)
+            // })
             state.items.push(action.payload)
+            // console.log("inside cart slice state.items", current(state))
+            // console.log("====action.payload", action.payload)
         }},
         deleteItem:(state)=>{
             state.items.pop()

@@ -4,14 +4,14 @@ import ResCards from "./ResCards";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
-import UserContext from "../utils/UserContext"
+import UserContext from "../utils/UserContext";
 function Body() {
   const [filteredData, setFilteredData] = useState([]); //can later be changed when fetch works
   const [searchValue, setSearchValue] = useState("");
   const [resData, setResData] = useState([]);
   // const [user, setUser] =useState("")
   const onlineStatus = useOnlineStatus();
-  const {loggedInUser, setUser}= useContext(UserContext)
+  const { loggedInUser, setUser } = useContext(UserContext);
   useEffect(() => {
     getData();
   }, []);
@@ -35,7 +35,7 @@ function Body() {
   };
   if (onlineStatus === false)
     return (
-      <h1>Hello! Looks like there is an issue with your internet connection</h1>
+      <h1 className="font-bold w-6/12 p-4 m-auto text-lg">Hello! Looks like there is an issue with your internet connection</h1>
     );
   if (resData.length === 0) return <Shimmer />;
   return (
@@ -46,6 +46,17 @@ function Body() {
           type="text"
           placeholder="Search a restuarant/dish"
           value={searchValue}
+          onKeyDown={(e) => {
+            if (e.key === "Enter"){
+                setFilteredData(
+              resData.filter((res) =>
+                res?.info?.name
+                  .toLowerCase()
+                  .includes(searchValue.toLowerCase())
+              )
+            );
+            }
+          }}
           onChange={(e) => {
             setSearchValue(e.target.value);
           }}
@@ -74,8 +85,8 @@ function Body() {
         >
           High Rated Restuarant
         </button>
-    
-         {/* <input className="ml-1.5 p-2 border border-cyan-200 rounded-lg"
+
+        {/* <input className="ml-1.5 p-2 border border-cyan-200 rounded-lg"
           type="text" value={loggedInUser} onChange={(e)=>{setUser(e.target.value)}}/>
           <span className="font-normal px-2">{loggedInUser}</span> */}
       </div>

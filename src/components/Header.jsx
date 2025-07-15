@@ -22,15 +22,15 @@ function Header() {
       </div>
       <div className="flex my-7">
         <ul className="flex justify-evenly align-middle text-nowrap">
-          <li className="bg-emerald-200 rounded-lg m-1 p-2 text-blue-950 font-medium">{onlineStatus ? "ONLINE" : "OFFLINE"}</li>
+          <li className="bg-emerald-200 rounded-lg m-1 p-2 text-blue-950 font-medium">{onlineStatus ? "💚" :"🔴 "}</li>
           <li className="bg-emerald-200 rounded-lg m-1 p-2 text-blue-950 font-medium">{loggedInUser}</li>
 
           <li className="bg-emerald-200 rounded-lg m-1 p-2 text-blue-950  font-medium">
             <Link to="/">HOME</Link>
           </li>
-          <li className="bg-emerald-200 rounded-lg m-1 p-2 text-blue-950  font-medium">
+          {/* <li className="bg-emerald-200 rounded-lg m-1 p-2 text-blue-950  font-medium">
             <Link to="/grocery">GROCERY</Link>
-          </li>
+          </li> */}
           <li className="bg-emerald-200 rounded-lg m-1 p-2 text-blue-950 font-medium">
             <Link to="/about">ABOUT</Link>
           </li>
